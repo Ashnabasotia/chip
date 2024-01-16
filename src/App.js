@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import CustomSelect from './custom-select';
+import {userData} from './assets/UserData'
 
 function App() {
+    const [options, setOptions] = useState(userData);
+
+  const handleChangeSelect = (e) => {
+    console.log(e)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CustomSelect
+        options={options}
+        placeHolder='Please select...'
+        onChange={(e) => handleChangeSelect(e)}
+        isSearchable
+        isMulti
+      />
     </div>
   );
 }
